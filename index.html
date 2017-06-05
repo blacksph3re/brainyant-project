@@ -5,15 +5,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script>
 callbackend = function(){
+	$('#message').text("Requesting...");
     $.get("/backend", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+    	$('#message').text("Data: " + data + "\nStatus: " + status);
     });
 };
 </script>
 </head>
 <body>
 
-<button id="button" onclick="callbackend();">asdasd</button>
+<button id="button" onclick="callbackend();">Press me!</button>
+
+<p id="message">
+Press the button
+</p>
 
 </body>
 </html>

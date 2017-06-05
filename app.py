@@ -1,6 +1,7 @@
 #!flask/bin/python
 from flask import Flask, Response
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setmode(GPIO.BOARD)
 pin = 8
@@ -14,7 +15,8 @@ app = Flask(__name__)
 def backend():
     print("Pulling up")
     GPIO.output(pin, GPIO.HIGH)
-    sleep(1)
+    time.sleep(1)
+    print("Pulling down")
     GPIO.output(pin, GPIO.LOW)
     return "Successfully triggered"
 
@@ -24,4 +26,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="::", port=8080, debug=True)
